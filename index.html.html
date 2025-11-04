@@ -10,165 +10,275 @@
   body {
     font-family: 'Poppins', sans-serif;
     background-color: #000;
-    color: #fff;
+    background-image:
+      radial-gradient(circle at top, rgba(0,0,0,0.85) 0%, #000 100%),
+      url('https://upload.wikimedia.org/wikipedia/commons/7/7b/Corinthians_logo.png');
+    background-size: contain, 180px;
+    background-repeat: repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f5f5f5;
     text-align: center;
     margin: 0;
-    padding: 0;
+    padding: 20px;
   }
 
   h1 {
-    color: #fff;
-    background-color: #111;
-    padding: 15px;
+    font-size: 2.6rem;
     margin-bottom: 10px;
+    color: #ffd700;
+    text-shadow: 2px 2px 8px #000;
   }
 
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 10px;
+  .card {
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #d4af37;
+    border-radius: 20px;
+    padding: 25px;
+    max-width: 850px;
+    margin: auto;
+    box-shadow: 0 0 25px rgba(212,175,55,0.3);
+  }
+
+  h2 {
+    color: #ffffff;
+    text-shadow: 0 0 8px #d4af37;
   }
 
   .info {
-    background: #111;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #ddd;
   }
 
-  .info p {
-    margin: 5px 0;
-    font-size: 16px;
-  }
-
-  .grid {
+  .numeros {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 8px;
+    gap: 10px;
+    margin-top: 20px;
   }
 
   .numero {
-    background: #222;
-    border: 2px solid #555;
+    background-color: #1c1c1c;
+    border: 2px solid #d4af37;
+    color: #fff;
     border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
+    padding: 10px 0;
     font-weight: 600;
-    transition: 0.2s;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.3s, box-shadow 0.3s;
   }
 
   .numero:hover {
-    background: #444;
-  }
-
-  .reservado {
-    background: #f1c40f;
+    background-color: #d4af37;
     color: #000;
-    cursor: not-allowed;
+    transform: scale(1.08);
   }
 
-  .vendido {
-    background: #27ae60;
-    color: #fff;
-    cursor: not-allowed;
+  .numero.selecionado {
+    background-color: #ffd700;
+    color: #000;
+    border-color: #fff;
+    box-shadow: 0 0 15px #ffd700;
+    animation: pulse 0.4s ease;
   }
 
-  .indisponivel {
-    background: #555;
-    color: #999;
+  @keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 5px #ffd700; }
+    50% { transform: scale(1.2); box-shadow: 0 0 25px #ffd700; }
+    100% { transform: scale(1); box-shadow: 0 0 15px #ffd700; }
+  }
+
+  .numero.reservado {
+    background-color: #555;
+    border: 2px solid #777;
+    color: #aaa;
     cursor: not-allowed;
+    text-decoration: line-through;
+  }
+
+  .botoes {
+    margin-top: 25px;
   }
 
   button {
-    background: #fff;
-    color: #000;
-    border: none;
+    margin: 10px;
     padding: 12px 20px;
     border-radius: 10px;
+    border: none;
+    font-size: 1rem;
     cursor: pointer;
-    font-weight: bold;
     transition: 0.3s;
-    margin-top: 15px;
+    font-weight: 600;
   }
 
-  button:hover {
-    background: #f1c40f;
+  #btnWhatsApp {
+    background-color: #25D366;
+    color: #000;
   }
+
+  #btnWhatsApp:hover {
+    background-color: #1ebe5d;
+  }
+
+  #btnPix {
+    background-color: #d4af37;
+    color: #000;
+  }
+
+  #btnPix:hover {
+    background-color: #ffd700;
+  }
+
+  #btnLimpar {
+    background-color: #555;
+    color: #fff;
+  }
+
+  #btnLimpar:hover {
+    background-color: #777;
+  }
+
+  #btnSortear {
+    background-color: #8a2be2;
+    color: #fff;
+  }
+
+  #btnSortear:hover {
+    background-color: #a35dfc;
+  }
+
+  footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+
+  .legenda {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+
+  .legenda span {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin: 3px;
+  }
+
+  .livre { background-color: #1c1c1c; border: 1px solid #d4af37; }
+  .selecionadoExemplo { background-color: #ffd700; color: #000; }
+  .reservadoExemplo { background-color: #555; color: #aaa; text-decoration: line-through; }
 </style>
 </head>
 <body>
 
-<h1>🎯 Rifa do Agasalho do Timão 🖤🤍</h1>
+  <div class="card">
+    <h1>Rifa do Agasalho do Timão ⚽</h1>
+    <h2>Participe e concorra ao agasalho oficial!</h2>
 
-<div class="container">
-  <div class="info">
-    <p><strong>Prêmio:</strong> Agasalho Oficial do Corinthians</p>
-    <p><strong>Valor por número:</strong> R$10,00</p>
-    <p><strong>Pix:</strong> 11977365209 (Caique Martins)</p>
+    <div class="info">💰 Valor por número: <strong>R$10,00</strong></div>
+    <div class="info">🎁 Prêmio: <strong>Agasalho Oficial do Corinthians</strong></div>
+    <div class="info">📱 Pagamento via Pix: <strong id="pix">11977365209</strong></div>
+    <div class="info">🧾 Nome para comprovante: <strong>Caique Martins</strong></div>
+
+    <div class="botoes">
+      <button id="btnPix" onclick="copiarPix()">📋 Copiar chave Pix</button>
+    </div>
+
+    <hr style="border: 1px solid #d4af37; margin: 20px 0;">
+
+    <h3>Selecione seus números:</h3>
+    <div class="numeros" id="listaNumeros"></div>
+
+    <div class="botoes">
+      <button id="btnWhatsApp" onclick="enviarWhatsApp()">Enviar pelo WhatsApp 📲</button>
+      <button id="btnLimpar" onclick="limparSelecao()">Limpar Seleção ❌</button>
+      <button id="btnSortear" onclick="sortearNumero()">Sortear Número 🎲</button>
+    </div>
+
+    <div class="legenda">
+      <p>
+        <span class="livre">Livre</span>
+        <span class="selecionadoExemplo">Selecionado</span>
+        <span class="reservadoExemplo">Reservado</span>
+      </p>
+    </div>
   </div>
 
-  <div class="grid" id="numerosContainer"></div>
+  <footer>⚫⚪ Vai Corinthians! ⚽</footer>
 
-  <button onclick="sortearNumero()">🎲 Sortear Número</button>
-</div>
+  <audio id="somSorteio" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_7a39c441c5.mp3?filename=fanfarra-vitoria-6777.mp3" type="audio/mpeg">
+  </audio>
 
 <script>
-  const totalNumeros = 100;
-  const numerosContainer = document.getElementById("numerosContainer");
+  const numerosReservados = [0];
 
-  // Lista de números já vendidos ou reservados
-  const numerosVendidos = [5, 12, 23]; // exemplo
-  const numerosReservados = [7, 14];   // exemplo
-  const numerosIndisponiveis = [1, 2]; // NOVO: números indisponíveis
+  const lista = document.getElementById('listaNumeros');
+  for (let i = 1; i <= 100; i++) {
+    const div = document.createElement('div');
+    div.className = 'numero';
+    div.textContent = i;
 
-  // Criação dos botões
-  for (let i = 1; i <= totalNumeros; i++) {
-    const btn = document.createElement("div");
-    btn.classList.add("numero");
-    btn.textContent = i;
-
-    if (numerosVendidos.includes(i)) {
-      btn.classList.add("vendido");
-      btn.textContent = i + " 🔒";
-    } else if (numerosReservados.includes(i)) {
-      btn.classList.add("reservado");
-      btn.textContent = i + " ⏳";
-    } else if (numerosIndisponiveis.includes(i)) {
-      btn.classList.add("indisponivel");
-      btn.textContent = i + " ❌";
+    if (numerosReservados.includes(i)) {
+      div.classList.add('reservado');
+    } else {
+      div.onclick = () => div.classList.toggle('selecionado');
     }
 
-    numerosContainer.appendChild(btn);
+    lista.appendChild(div);
   }
 
-  // Função de sorteio com senha
+  function enviarWhatsApp() {
+    const selecionados = [...document.querySelectorAll('.numero.selecionado')].map(n => n.textContent);
+    if (selecionados.length === 0) {
+      alert('Selecione pelo menos um número antes de enviar.');
+      return;
+    }
+    const numero = '5511977365209';
+    const mensagem = `Olá! Quero participar da *Rifa do Agasalho do Timão* ⚽\nEscolhi os números: ${selecionados.join(', ')}\nPix: 11977365209\nNome: Caique Martins`;
+    const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    window.open(link, '_blank');
+  }
+
+  function limparSelecao() {
+    document.querySelectorAll('.numero.selecionado').forEach(n => n.classList.remove('selecionado'));
+  }
+
+  function copiarPix() {
+    const chave = document.getElementById('pix').innerText;
+    navigator.clipboard.writeText(chave);
+    alert('Chave Pix copiada com sucesso!');
+  }
+
   function sortearNumero() {
-    const senhaCorreta = "1234"; // <-- altere aqui a senha
-    const senha = prompt("Digite a senha para realizar o sorteio:");
-
+    const senhaCorreta = "021930"; // 🔒 senha para autorizar o sorteio
+    const senha = prompt("Digite a senha para sortear o número:");
     if (senha !== senhaCorreta) {
-      alert("❌ Senha incorreta. Sorteio cancelado!");
+      alert("❌ Senha incorreta! Sorteio cancelado.");
       return;
     }
 
-    const disponiveis = [];
-    for (let i = 1; i <= totalNumeros; i++) {
-      if (
-        !numerosVendidos.includes(i) &&
-        !numerosReservados.includes(i) &&
-        !numerosIndisponiveis.includes(i)
-      ) {
-        disponiveis.push(i);
-      }
-    }
-
-    if (disponiveis.length === 0) {
-      alert("⚠️ Nenhum número disponível para sorteio!");
+    const livres = [...document.querySelectorAll('.numero:not(.reservado):not(.selecionado)')];
+    if (livres.length === 0) {
+      alert('Todos os números estão reservados ou selecionados!');
       return;
     }
 
-    const sorteado = disponiveis[Math.floor(Math.random() * disponiveis.length)];
-    alert("🎉 Número sorteado: " + sorteado + " 🎉");
+    const sorteado = livres[Math.floor(Math.random() * livres.length)];
+    sorteado.classList.add('selecionado');
+    sorteado.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    const som = document.getElementById('somSorteio');
+    som.currentTime = 0;
+    som.play();
+
+    sorteado.style.boxShadow = '0 0 25px 10px #8a2be2';
+    setTimeout(() => sorteado.style.boxShadow = '', 1000);
+
+    alert(`🎉 Número sorteado: ${sorteado.textContent}`);
   }
 </script>
 
